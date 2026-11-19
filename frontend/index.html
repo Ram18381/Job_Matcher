@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101b35" />
+  <title>Job Matcher — Relational PostgreSQL & Flask Job Platform</title>
+  <meta name="description" content="Beginner-friendly web development & SQL platform connecting Candidates, Recruiters, and Website Developers with PostgreSQL." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Project Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+
+  <!-- ========================================================================
+       1. LANDING & HOME SCREEN (3 Clear Role Entry Points)
+       ======================================================================== -->
+  <div id="landing-screen" class="landing-screen">
+    <nav class="landing-nav">
+      <div class="brand">
+        <span class="brand-mark"><i data-lucide="layers"></i></span>
+        <span>Job Matcher<small>POSTGRESQL & FLASK PLATFORM</small></span>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button id="hero-quick-login-btn" class="btn btn-outline" style="color:#ffffff;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.08)">
+          <i data-lucide="log-in"></i> Sign In
+        </button>
+      </div>
+    </nav>
+
+    <header class="landing-hero">
+      <span class="eyebrow light">3NF NORMALIZED RELATIONAL DBMS</span>
+      <h1>Turn your technical skills<br>into <em>career opportunities.</em></h1>
+      <p>
+        A beginner-friendly full-stack database application connecting Job Seekers and Employers with transparent SQL matching, developer oversight, and PostgreSQL transactions.
+      </p>
+    </header>
+
+    <!-- 1-Click Demo Accounts Quick Bar -->
+    <div class="demo-accounts-bar" style="margin-top:-10px;">
+      <span><i data-lucide="sparkles" style="width:15px;color:#f0c96f;"></i> Quick Demo Credentials:</span>
+      <div class="demo-pills-list">
+        <button type="button" class="demo-pill" data-role="user" data-user="asha_dev" data-pass="password123">
+          🎓 Asha Kumar <small>(Candidate · Python/DB)</small>
+        </button>
+        <button type="button" class="demo-pill" data-role="recruiter" data-user="priya_google" data-pass="password123">
+          🏢 Priya Sharma <small>(Approved Recruiter · Google)</small>
+        </button>
+        <button type="button" class="demo-pill" data-role="recruiter" data-user="mark_nextgen" data-pass="password123" title="Try logging in to see the pending developer approval block!">
+          ⏳ Mark <small>(Pending Recruiter · NextGen)</small>
+        </button>
+        <button type="button" class="demo-pill" data-role="developer" data-user="developer" data-pass="dev@123">
+          🛠️ Developer <small>(System Admin · dev@123)</small>
+        </button>
+      </div>
+    </div>
+
+    <!-- 3 Clear Entry Points Grid -->
+    <section class="portal-entry-grid">
+      <!-- Entry Point 1: Candidate / Student -->
+      <div class="portal-card">
+        <span class="portal-card-badge user">Candidate Portal</span>
+        <div class="portal-icon user"><i data-lucide="graduation-cap"></i></div>
+        <h3>Job Seeker / Student</h3>
+        <p>Build your technical profile, declare your skills & proficiencies, receive transparent SQL recommendations, upload your CV, and apply with zero duplicates.</p>
+        <ul class="portal-features">
+          <li><i data-lucide="check"></i> Multi-level skill & proficiency profiles</li>
+          <li><i data-lucide="check"></i> Transparent SQL skill-overlap recommendations</li>
+          <li><i data-lucide="check"></i> CV uploads & persistent application tracking</li>
+        </ul>
+        <div class="portal-actions">
+          <button class="btn btn-primary" onclick="openAuthModal('user', 'login')">
+            <i data-lucide="log-in"></i> Sign In as Candidate
+          </button>
+          <button class="btn btn-outline" onclick="openAuthModal('user', 'register')">
+            <i data-lucide="user-plus"></i> Create Candidate Account
+          </button>
+        </div>
+      </div>
+
+      <!-- Entry Point 2: Recruiter / Employer -->
+      <div class="portal-card">
+        <span class="portal-card-badge recruiter">Recruiter Portal</span>
+        <div class="portal-icon recruiter"><i data-lucide="briefcase"></i></div>
+        <h3>Recruiter & Employer</h3>
+        <p>Register your company, post openings with specific required skills, review applicants scoped to your company, and advance hiring stages with audit notes.</p>
+        <ul class="portal-features">
+          <li><i data-lucide="check"></i> Manage company jobs, modes & compensation</li>
+          <li><i data-lucide="check"></i> View applicants strictly for your company</li>
+          <li><i data-lucide="check"></i> Advance status: Review, Shortlist, Select</li>
+        </ul>
+        <div class="portal-actions">
+          <button class="btn btn-mint" onclick="openAuthModal('recruiter', 'login')">
+            <i data-lucide="log-in"></i> Sign In as Recruiter
+          </button>
+          <button class="btn btn-outline" onclick="openAuthModal('recruiter', 'register')">
+            <i data-lucide="building"></i> Register Company & Recruiter
+          </button>
+        </div>
+      </div>
+
+      <!-- Entry Point 3: Website Developer / Admin -->
+      <div class="portal-card">
+        <span class="portal-card-badge developer">Developer Portal</span>
+        <div class="portal-icon developer"><i data-lucide="shield-check"></i></div>
+        <h3>Website Developer</h3>
+        <p>System oversight & database governance. Review and approve or reject pending companies to grant recruiter access, inspect transactions, and audit records.</p>
+        <ul class="portal-features">
+          <li><i data-lucide="check"></i> Approve or reject pending recruiter companies</li>
+          <li><i data-lucide="check"></i> Timestamped review auditing in PostgreSQL</li>
+          <li><i data-lucide="check"></i> Full system metrics & user administration</li>
+        </ul>
+        <div class="portal-actions">
+          <button class="btn btn-soft" style="background:#fff3e6;color:#c06915;border:1px solid #fbdcb9;" onclick="openAuthModal('developer', 'login')">
+            <i data-lucide="lock"></i> Developer Sign In
+          </button>
+          <small style="text-align:center;color:#8a98ae;font-size:10px;margin-top:5px;">
+            <i data-lucide="info" style="width:12px;display:inline;"></i> Developer accounts are seeded via CLI setup. No public registration.
+          </small>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ========================================================================
+       2. AUTHENTICATED APP SHELL (Sidebar, Topbar & Viewport)
+       ======================================================================== -->
+  <div id="app-shell" class="app-shell hidden">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="brand">
+          <span class="brand-mark"><i data-lucide="layers"></i></span>
+          <span>Job Matcher<small>POSTGRESQL PLATFORM</small></span>
+        </div>
+        <button class="icon-btn sidebar-close" id="sidebar-close" aria-label="Close menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="workspace-label" id="workspace-label">WORKSPACE</div>
+      <nav class="sidebar-nav" id="sidebar-nav"></nav>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-role-badge">
+          <span class="avatar" id="sidebar-avatar">AK</span>
+          <div>
+            <b id="sidebar-user-name">Asha Kumar</b>
+            <small id="sidebar-user-role">Candidate</small>
+          </div>
+        </div>
+        <button class="nav-link" id="logout-btn" style="color:#f28b82;">
+          <i data-lucide="log-out"></i>
+          <span>Log out</span>
+        </button>
+        <div class="sidebar-version">
+          <span>POSTGRESQL 18</span>
+          <span>FLASK REST API</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="main-area">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu-btn" id="mobile-menu-btn" style="display:none;" aria-label="Open menu">
+          <i data-lucide="menu"></i>
+        </button>
+
+        <div class="top-search">
+          <i data-lucide="search"></i>
+          <input id="global-search" type="search" placeholder="Search opportunities, skills, companies..." />
+          <kbd style="font-size:9px;background:#fff;border:1px solid #e1e7f0;border-radius:4px;padding:2px 5px;color:#8f9cb0;">Enter</kbd>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="profile-trigger">
+            <span class="avatar" id="top-avatar">AK</span>
+            <div class="profile-trigger-copy">
+              <b id="top-name">Asha Kumar</b>
+              <small id="top-role">Candidate</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="main-content">
+        <!-- Views are rendered dynamically by app.js -->
+      </main>
+
+      <footer class="app-footer">
+        <span>© 2026 Job Matcher — DBMS Relational Matching Platform</span>
+        <span><i data-lucide="database"></i> PostgreSQL 3NF Backend · Python Flask API</span>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Root container for modals & dialogs -->
+  <div id="modal-root"></div>
+
+  <!-- Application Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
